@@ -6,6 +6,7 @@ on:
     paths:
       - "source-archive.part*.b64"
       - "rebuild-source.ps1"
+      - ".github/workflows/expand-source.yml"
 
 permissions:
   contents: write
