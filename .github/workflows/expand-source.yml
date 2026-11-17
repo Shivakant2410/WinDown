@@ -1,0 +1,60 @@
+name: Expand Windows source archive
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "source-archive.part*.b64"
+      - "rebuild-source.ps1"
+
+permissions:
+  contents: write
+
+jobs:
+  expand-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: Reconstruct and extract source
+        shell: python
+        run: |
+          import base64
+          import gzip
+          import io
+          import pathlib
+          import zipfile
+
+          root = pathlib.Path(".")
+          names = [f"source-archive.part{i:02d}.b64" for i in range(1, 6)]
+          encoded = "".join((root / name).read_text(encoding="ascii").strip() for name in names)
+          compressed = base64.b64decode(encoded, validate=True)
+          archive = gzip.decompress(compressed)
+
+          with zipfile.ZipFile(io.BytesIO(archive)) as zf:
+              for info in zf.infolist():
+                  target = pathlib.PurePosixPath(info.filename)
+                  if target.is_absolute() or ".." in target.parts:
+                      raise RuntimeError(f"Unsafe archive path: {info.filename}")
+              zf.extractall(root)
+
+          project = root / "ClamDown-Windows"
+          if not (project / "ClamDown.sln").is_file():
+              raise RuntimeError("Archive extraction did not produce ClamDown.sln")
+          print(f"Extracted {sum(1 for p in project.rglob('*') if p.is_file())} project files")
+
+      - name: Commit expanded source tree
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ClamDown-Windows
+          if git diff --cached --quiet; then
+            echo "No extracted source changes to commit"
+            exit 0
+          fi
+          git commit -m "Expand Windows port source tree"
+          git push origin HEAD:main
