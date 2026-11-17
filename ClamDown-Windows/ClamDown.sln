@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClamDown.Core", "src\ClamDown.Core\ClamDown.Core.csproj", "{D1C12F22-11E2-4F11-A01A-100000000001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClamDown.Service", "src\ClamDown.Service\ClamDown.Service.csproj", "{D1C12F22-11E2-4F11-A01A-100000000002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClamDown.Tests", "tests\ClamDown.Tests\ClamDown.Tests.csproj", "{D1C12F22-11E2-4F11-A01A-100000000003}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClamDown.Desktop", "src\ClamDown.Desktop\ClamDown.Desktop.csproj", "{D1C12F22-11E2-4F11-A01A-100000000004}"
+EndProject
+Global
+ GlobalSection(SolutionConfigurationPlatforms) = preSolution
+  Debug|Any CPU = Debug|Any CPU
+  Release|Any CPU = Release|Any CPU
+ EndGlobalSection
+ GlobalSection(ProjectConfigurationPlatforms) = postSolution
+  {D1C12F22-11E2-4F11-A01A-100000000004}.Debug|Any CPU.ActiveCfg = Debug|x64
+  {D1C12F22-11E2-4F11-A01A-100000000004}.Debug|Any CPU.Build.0 = Debug|x64
+  {D1C12F22-11E2-4F11-A01A-100000000004}.Release|Any CPU.ActiveCfg = Release|x64
+  {D1C12F22-11E2-4F11-A01A-100000000004}.Release|Any CPU.Build.0 = Release|x64
+  {D1C12F22-11E2-4F11-A01A-100000000001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+  {D1C12F22-11E2-4F11-A01A-100000000001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+  {D1C12F22-11E2-4F11-A01A-100000000001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+  {D1C12F22-11E2-4F11-A01A-100000000001}.Release|Any CPU.Build.0 = Release|Any CPU
+  {D1C12F22-11E2-4F11-A01A-100000000002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+  {D1C12F22-11E2-4F11-A01A-100000000002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+  {D1C12F22-11E2-4F11-A01A-100000000002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+  {D1C12F22-11E2-4F11-A01A-100000000002}.Release|Any CPU.Build.0 = Release|Any CPU
+  {D1C12F22-11E2-4F11-A01A-100000000003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+  {D1C12F22-11E2-4F11-A01A-100000000003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+  {D1C12F22-11E2-4F11-A01A-100000000003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+  {D1C12F22-11E2-4F11-A01A-100000000003}.Release|Any CPU.Build.0 = Release|Any CPU
+ EndGlobal
